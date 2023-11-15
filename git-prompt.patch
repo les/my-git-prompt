@@ -1,0 +1,17 @@
+--- /usr/share/git/completion/git-prompt.sh	2023-11-02 23:23:23.000000000 +0000
++++ git-prompt.sh	2023-11-15 23:23:23.000000000 +0000
+@@ -525,6 +525,14 @@
+ 	local p="" # short version of upstream state indicator
+ 	local upstream="" # verbose version of upstream state indicator
+
++       # my worktree hack
++	if [ "false" = "$inside_gitdir" ] &&
++          [ "true" = "$bare_repo" ] &&
++          [ "false" = "$inside_worktree" ]
++       then
++          b="worktrees"
++       fi
++
+ 	if [ "true" = "$inside_gitdir" ]; then
+ 		if [ "true" = "$bare_repo" ]; then
+ 			c="BARE:"
